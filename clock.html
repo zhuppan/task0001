@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>clock</title>
+<script type="text/JavaScript">
+	//时间初始化
+	function clock(){
+		var time=new Date();
+		var attime=time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+		return attime;
+	}
+	//通过回调本身 用setTimeout实现
+	var d;
+	function timeAct(){
+		var thetime=clock();
+        document.getElementById("date").innerHTML=thetime;
+        d=setTimeout(timeAct,1000);
+	}
+	timeAct();
+	function start(){
+		setTimeout(timeAct,1000);
+	}
+	function stop(){
+		clearTimeout(d);
+	}
+
+  </script> 
+ </head> 
+ <body>
+ 	<button id="start" onclick="start()">开始</button>
+ 	<button id="stop" onclick="stop()">结束</button>
+ 	<div id="date"></div>
+</body>
+</html>
